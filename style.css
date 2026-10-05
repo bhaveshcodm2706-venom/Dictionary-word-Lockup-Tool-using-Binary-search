@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    padding: 20px;
+}
+
+.dictionary-card {
+    background: white;
+    padding: 40px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+#wordInput {
+    flex: 1;
+
+    padding: 14px;
+
+    font-size: 16px;
+
+    border: 2px solid #ddd;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+#wordInput:focus {
+    border-color: #667eea;
+}
+
+#searchButton {
+    padding: 14px 25px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #667eea;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background: #5568d8;
+}
+
+.result {
+    margin-top: 25px;
+
+    padding: 20px;
+
+    min-height: 100px;
+
+    background: #f5f5f5;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    color: #333;
+}
+
+.result.success {
+    background: #e8f5e9;
+    border-left: 5px solid #4caf50;
+}
+
+.result.error {
+    background: #ffebee;
+    border-left: 5px solid #f44336;
+}
+
+.word {
+    font-size: 25px;
+    font-weight: bold;
+
+    color: #667eea;
+
+    margin-bottom: 10px;
+}
+
+.meaning {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.comparisons {
+    margin-top: 15px;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+.loading {
+    text-align: center;
+    color: #667eea;
+}
+
+@media (max-width: 600px) {
+
+    .dictionary-card {
+        padding: 25px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    #searchButton {
+        width: 100%;
+    }
+}
