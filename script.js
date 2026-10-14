@@ -1,83 +1,116 @@
+const input = document.getElementById("wordInput");
+const searchButton = document.getElementById("searchButton");
+const result = document.getElementById("result");
+
+// Search word using backend
 async function searchWord() {
+    const word = input.value.trim().toLowerCase();
 
-    const input = document.getElementById("wordInput");
-    const result = document.getElementById("result");
-
-    const word = input.value.trim();
-
+    // Check empty input
     if (word === "") {
         result.className = "result error";
-        result.innerHTML = "⚠️ Please enter a word.";
+
+        result.innerHTML = `
+            <p>⚠️ Please enter a word.</p>
+        `;
+
         return;
     }
 
+    // Show loading message
     result.className = "result";
-    result.innerHTML = "🔍 Searching...";
+
+    result.innerHTML = `
+        <p class="loading">🔎 Searching...</p>
+    `;
 
     try {
-
-        const response = await fetch("/search", {
-
+        // Send word to backend
+        const response = await fetch("/api/search", {
             method: "POST",
-
             headers: {
                 "Content-Type": "application/json"
             },
-
             body: JSON.stringify({
                 word: word
             })
         });
 
+        // Check if server response is OK
+        if (!response.ok) {
+            throw new Error("Server error");
+        }
+
+        // Convert response to JSON
         const data = await response.json();
 
+        // Word found
         if (data.success) {
-
             result.className = "result success";
 
             result.innerHTML = `
-                <div class="word">${data.word}</div>
+                <div class="word">
+                    📖 ${data.word}
+                </div>
 
-                <div>
+                <div class="meaning">
                     <strong>Meaning:</strong>
                     ${data.meaning}
                 </div>
 
                 <div class="comparisons">
-                    Binary Search Comparisons:
+                    🔎 Binary Search Comparisons:
                     <strong>${data.comparisons}</strong>
-                </div>
-            `;
-
-        } else {
-
-            result.className = "result error";
-
-            result.innerHTML = `
-                ❌ <strong>${data.word || "Word"}</strong> was not found.
-
-                <div class="comparisons">
-                    Binary Search Comparisons:
-                    <strong>${data.comparisons || 0}</strong>
                 </div>
             `;
         }
 
-    } catch (error) {
+        // Word not found
+        else {
+            result.className = "result error";
+
+            result.innerHTML = `
+                <strong>❌ Word Not Found</strong>
+
+                <br><br>
+
+                The word
+                <strong>"${data.word || word}"</strong>
+                is not present in the dictionary.
+
+                <br><br>
+
+                🔎 Binary Search Comparisons:
+                <strong>${data.comparisons || 0}</strong>
+            `;
+        }
+    }
+
+    catch (error) {
+        console.error("Error:", error);
 
         result.className = "result error";
 
-        result.innerHTML =
-            "❌ Unable to connect to the Python backend.";
+        result.innerHTML = `
+            <strong>❌ Server Connection Error</strong>
+
+            <br><br>
+
+            The backend server is not running properly.
+
+            <br><br>
+
+            Please check the StackBlitz Terminal.
+        `;
     }
 }
 
+// Connect Search button to searchWord()
+searchButton.addEventListener("click", searchWord);
 
 // Allow pressing Enter to search
-document.getElementById("wordInput").addEventListener("keypress", function(event) {
-
+input.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         searchWord();
     }
-
 });

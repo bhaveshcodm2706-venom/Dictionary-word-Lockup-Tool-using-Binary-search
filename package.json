@@ -1,8 +1,8 @@
 {
+  "name": "dictionary-word-lookup-tool",
+  "version": "1.0.0",
+  "description": "Dictionary Word Lookup Tool using Binary Search",
   "scripts": {
-    "start": "servor --reload"
-  },
-  "dependencies": {
-    "servor": "^4.0.2"
+    "start": "node server.js"
   }
 }
