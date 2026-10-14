@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&family=Orbitron:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,8 +8,15 @@
   }
   
   body {
-    font-family: Arial, sans-serif;
-  
+
+    font-family: 'Nunito', Comic Sans MS;
+
+    h1{font-size: 38px;
+     
+    font-weight: 700;
+    color: #000000;
+    }
+
     min-height: 100vh;
   
     display: flex;
@@ -15,22 +25,22 @@
   
     background: linear-gradient(
         135deg,
-        rgb(126, 0, 128),
-        #770ee1
+        rgb(67, 0, 68),
+        #30005f
     );
   }
   
   .container {
     width: 100%;
-    max-width: 650px;
+    max-width: 850px;
     padding: 20px;
   }
   
   .dictionary-card {
-    background: white;
-    padding: 40px;
+    background:  rgb(221, 179, 215);
+    padding: 60px;
   
-    border-radius: 18px;
+    border-radius: 28px;
   
     box-shadow:
         0 15px 40px rgba(0, 0, 0, 0.25);
@@ -39,35 +49,35 @@
   }
   
   h1 {
-    color: #333;
-    margin-bottom: 10px;
+    color: #484545;
+    margin-bottom: 30px;
   }
   
   .subtitle {
-    color: #666;
+    color: #291818;
     margin-bottom: 30px;
   }
   
   .search-box {
     display: flex;
-    gap: 10px;
+    gap: 30px;
   }
   
   #wordInput {
     flex: 1;
   
-    padding: 14px;
+    padding: 18px;
   
-    font-size: 16px;
+    font-size: 18px;
   
-    border: 2px solid #ddd;
+    border: 4px solid rgb(231, 231, 231);
     border-radius: 8px;
   
     outline: none;
   }
   
   #wordInput:focus {
-    border-color: #667eea;
+    border-color: #c752e7;
   }
   
   #searchButton {
@@ -76,17 +86,17 @@
     border: none;
     border-radius: 8px;
   
-    background: #667eea;
+    background: #bb943a;
     color: white;
   
-    font-size: 16px;
+    font-size: 19px;
     font-weight: bold;
   
     cursor: pointer;
   }
   
   #searchButton:hover {
-    background: #5568d8;
+    background: #d85597;
   }
   
   .result {
