@@ -12,10 +12,6 @@ const dictionary = [
         meaning: "A step-by-step procedure used to solve a problem."
     },
     {
-        word: "Array",
-        meaning: "A collection of elements stored under one variable name."
-    },
-    {
         word: "Binary",
         meaning: "A number system that uses only 0 and 1."
     },
@@ -67,62 +63,40 @@ const dictionary = [
 
 function binarySearch(searchWord) {
 
-    // Normalize the search word
     searchWord = searchWord.trim().toLowerCase();
 
     let low = 0;
     let high = dictionary.length - 1;
-    let comparisons = 0;
 
     while (low <= high) {
 
         const middle = Math.floor((low + high) / 2);
 
-        comparisons++;
-
-        // Normalize dictionary word also
         const middleWord =
-            dictionary[middle].word.trim().toLowerCase();
+            dictionary[middle].word.toLowerCase();
 
-        console.log(
-            "Comparison:",
-            comparisons,
-            "| Searching:",
-            searchWord,
-            "| Middle:",
-            middleWord
-        );
-
-        // Word found
         if (middleWord === searchWord) {
-
             return {
                 found: true,
-                meaning: dictionary[middle].meaning,
-                comparisons: comparisons
+                word: dictionary[middle].word,
+                meaning: dictionary[middle].meaning
             };
         }
 
-        // Search right half
         if (middleWord < searchWord) {
-
             low = middle + 1;
-
-        }
-
-        // Search left half
-        else {
-
+        } else {
             high = middle - 1;
         }
     }
 
     return {
         found: false,
-        meaning: "",
-        comparisons: comparisons
+        word: searchWord,
+        meaning: ""
     };
 }
+
 
 // ==========================================
 // MIME TYPES

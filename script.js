@@ -57,11 +57,6 @@ async function searchWord() {
                     <strong>Meaning:</strong>
                     ${data.meaning}
                 </div>
-
-                <div class="comparisons">
-                    🔎 Binary Search Comparisons:
-                    <strong>${data.comparisons}</strong>
-                </div>
             `;
         }
 
@@ -77,11 +72,6 @@ async function searchWord() {
                 The word
                 <strong>"${data.word || word}"</strong>
                 is not present in the dictionary.
-
-                <br><br>
-
-                🔎 Binary Search Comparisons:
-                <strong>${data.comparisons || 0}</strong>
             `;
         }
     }
@@ -100,7 +90,7 @@ async function searchWord() {
 
             <br><br>
 
-            Please check the StackBlitz Terminal.
+            Please check your backend server.
         `;
     }
 }
